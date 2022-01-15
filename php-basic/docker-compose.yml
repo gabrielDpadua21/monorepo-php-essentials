@@ -1,0 +1,15 @@
+version: "3"
+services:
+    nginx:
+        image: nginx
+        ports: 
+            - "80:80"
+        links:
+            - php
+        volumes:
+            - ./nginx:/etc/nginx/conf.d:ro
+            - ./src:/var/www/html:ro
+    php:
+        image: php:7.3-fpm
+        volumes:
+            - ./src:/var/www/html:z

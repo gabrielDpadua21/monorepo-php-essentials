@@ -1,0 +1,13 @@
+Arquivo de configuração do apache
+httpd.conf
+
+Arquivo de configuração do php:
+php.ini
+
+Arquitetura - cliente/Servidor
+
+Request (Requisição): 
+Solicitação para o servidor
+
+Response (Resposta):
+Resposta do servirdor
