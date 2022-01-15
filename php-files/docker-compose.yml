@@ -1,0 +1,23 @@
+version: '3'
+services:
+  phpfiles:
+    build: .
+    volumes:
+      - ./:/var/www
+      - ./.docker/nginx/php.ini:/usr/local/etc/php/conf.d/php.ini
+    depends_on:
+      - phpfiles-redis
+
+  phpfiles-nginx:
+    build: ./.docker/nginx
+    ports:
+      - "8001:80"
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - phpfiles
+
+  phpfiles-redis:
+    image: redis:alpine
+    expose:
+      - 6379
