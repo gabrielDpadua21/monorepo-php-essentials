@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/styles.css">
+
+    <title>Sender Email</title>
+</head>
+<body>
+    
+    <form action="./api/index.php" method="POST" class="sender-form">
+        
+        <h1>
+            Send Email
+        </h1>
+
+        <div class="txtb">
+            <input type="text" name='email'>
+            <span data-placeholder="Email"></span>
+        </div>
+
+        <div class="txtb">
+            <input type="text" name='name'>
+            <span data-placeholder="name"></span>
+        </div>
+
+        <div class="txtarea">
+            <textarea name="message"></textarea>
+            <span data-placeholder=""></span>
+        </div>
+
+        <input type="submit" class="sendbt" value="SEND">
+
+    </form>
+
+</body>
+</html>

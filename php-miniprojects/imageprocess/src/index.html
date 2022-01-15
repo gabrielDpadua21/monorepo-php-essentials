@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Certificate</title>    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" />
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-content">
+             <form action="./api/index.php" method="POST">
+
+                <div class="field">
+                    <label class="label">Titulo do Certificado</label>
+                    <div class="control">
+                      <input class="input" name="title" type="text" placeholder="@Curso de Python">
+                    </div>
+                  </div>
+                  
+                  <div class="field">
+                    <label class="label">Nome do Aluno</label>
+                    <div class="control">
+                      <input class="input" name="student" type="text" placeholder="@Joao da Silva" value="">
+                    </div>
+                  </div>
+                   
+                  <div class="field">
+                    <label class="label">Tipo de Fonte</label>
+                    <div class="control">
+                      <div class="select">
+                        <select name="font">
+                          <option>Bevan</option>
+                          <option>Playball</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="field">
+                    <label class="label">Texto do Certificado</label>
+                    <div class="control">
+                      <textarea name="content" class="textarea" placeholder="Textarea"></textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="field is-grouped">
+                    <div class="control">
+                      <button class="button is-link">Criar</button>
+                    </div>
+                    <div class="control">
+                      <button class="button is-link is-light">Cancelar</button>
+                    </div>
+                  </div>
+             </form>
+             <hr />
+            <div class="content">
+                <h5>
+                    Exemplo a Baixo:
+                </h5>
+            </div>
+            <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="./images/certificado.jpg" alt="Exemple">
+                </figure>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

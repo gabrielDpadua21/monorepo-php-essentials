@@ -1,0 +1,15 @@
+{
+    "name": "gabrieldpadua/composer",
+    "description": "Create a composer file",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gabriel D. Padua",
+            "email": "gabriel.d.padua21@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "1.0.*" 
+    }
+}

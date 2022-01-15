@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+    boletos-app:
+        build: ./.docker/php
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/php.ini:/usr/local/etc/conf.d/php.ini
+        depends_on: 
+            - boletos-mysql
+
+
+    boletos-mysql:
+        image: mysql:5.7.22
+        command: --innodb-use-native-aio=0
+        volumes:
+            - "./.docker/data/boletosdata:/var/lib/mysql"
+        ports:
+            - "3306:3306"
+        environment: 
+            MYSQL_DATABASE: db_boletos
+            MYSQL_ROOT_PASSWORD: Asterix2108@
+        
+    boletos-nginx:
+        build: ./.docker/nginx
+        ports:
+            - "8001:80"
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - boletos-app
+
+    boletos-redis:
+        image: redis:alpine
+        expose: 
+            - 6379

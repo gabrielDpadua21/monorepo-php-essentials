@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+    project-gd:
+        build: ./.docker/php
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/php.ini:/usr/local/etc/conf.d/php.ini
+        depends_on: 
+            - gd-mysql
+
+
+    gd-mysql:
+        image: mysql:5.7.22
+        command: --innodb-use-native-aio=0
+        volumes:
+            - "./.docker/data/gddata:/var/lib/mysql"
+        ports:
+            - "3306:3306"
+        environment: 
+            MYSQL_DATABASE: db_projectgd
+            MYSQL_ROOT_PASSWORD: Asterix2108@
+        
+    gd-nginx:
+        build: ./.docker/nginx
+        ports:
+            - "8001:80"
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - project-gd
+
+    gd-redis:
+        image: redis:alpine
+        expose: 
+            - 6379

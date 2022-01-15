@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+    mailer-app:
+        build: ./.docker/php
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/php.ini:/usr/local/etc/conf.d/php.ini
+
+        
+    mailer-nginx:
+        build: ./.docker/nginx
+        ports:
+            - "8001:80"
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - mailer-app
