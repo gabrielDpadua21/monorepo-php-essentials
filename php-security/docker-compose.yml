@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+    phpsec-app:
+        build: ./.docker/php
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/php.ini:/usr/local/etc/conf.d/php.ini
+        depends_on: 
+            - phpsec-mysql
+       
+    phpsec-nginx:
+        build: ./.docker/nginx
+        ports:
+            - "8001:80"
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - phpsec-app
+
+    phpsec-mysql:
+        image: mysql:5.7.22
+        command: --innodb-use-native-aio=0
+        volumes:
+            - "./.docker/dbdata:/var/lib/mysql"
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: db_phpsec
+            MYSQL_ROOT_PASSWORD: toor
